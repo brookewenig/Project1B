@@ -1,4 +1,4 @@
-SELECT first, last FROM MovieActor, Actor WHERE (MovieActor.aid = Actor.id AND mid = (SELECT id FROM Movie WHERE title = 'Die Another Day')) ORDER BY first, last; -- tag The inner query searches for the mid of 'Die Another Day', and the outer query matches mid to that query and lists the resulting actors first and last names.
+SELECT CONCAT(first, ' ',last) as Actors FROM MovieActor, Actor WHERE (MovieActor.aid = Actor.id AND mid = (SELECT id FROM Movie WHERE title = 'Die Another Day')) ORDER BY Actors; -- tag The inner query searches for the mid of 'Die Another Day', and the outer query matches mid to that query and lists the resulting actors first and last names.
 
 SELECT COUNT(*) as NumMultipleActors FROM(SELECT aid FROM MovieActor GROUP BY aid HAVING COUNT(aid) > 1) alias_name; -- tag The inner query gets aids of the actors who occur in more than one movie. The outer query counts the number of tuples in that relation.
 
